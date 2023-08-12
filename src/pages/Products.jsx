@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./products.css";
 import { useInventory } from "../contexts/InventoryContext";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const { data, inventory, dispatch } = useInventory();
@@ -123,7 +124,7 @@ const Products = () => {
                     height="50"
                   />
                 </td>
-                <td>{item.name}</td>
+                <td><Link to={`/products/${item.id}`}>{item.name}</Link></td>
                 <td>{item.description}</td>
                 <td>${item.price.toFixed(2)}</td>
                 <td>{item.stock}</td>

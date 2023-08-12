@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Sidebar from './components/Sidebar'
 import Departments from './pages/Departments'
 import Products from './pages/Products'
+import SingleProduct from './pages/SingleProduct'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path={'/'} exact element={<Dashboard/>} />
         <Route path={'/departments'} exact element={<Departments/>} />
         <Route path={'/products'} exact element={<Products />} />
+        <Route path={'/products/:id'} exact element={<SingleProduct />} />
       </Routes>
     </div>
   )
