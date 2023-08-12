@@ -1,0 +1,37 @@
+.products{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+}
+.products-filters {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.product-table{
+    display: flex;
+    flex-direction: column;
+}
+
+thead{
+    background-color: #eee;
+    padding: 10px;
+}
+
+thead > tr>th{
+    padding: 10px;
+    font: 20px;
+}
+
+td> img{
+    width: 180px;
+    height: 280px;
+}
+
+tr{
+    border: 1px solid #dddddd;
+}
