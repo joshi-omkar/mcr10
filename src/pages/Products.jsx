@@ -4,18 +4,19 @@ import { useInventory } from "../contexts/InventoryContext";
 
 const Products = () => {
   const { data, inventory, dispatch } = useInventory();
-  localStorage.setItem("department", "All departments");
-  localStorage.setItem("sort", "name");
-  localStorage.setItem("lowStock", true);
   const departments = ["All departments", "Kitchen", "Clothing", "Toys"];
   const [selectedDepartment, setSelectedDepartment] = useState(
-    localStorage.getItem("department")
+    localStorage.getItem("department") !== "All departments"
+      ? localStorage.getItem("department")
+      : "All Departments"
   );
   const [selectedSort, setSelectedSort] = useState(
-    localStorage.getItem("sort")
+    localStorage.getItem("sort") !== "name"
+      ? localStorage.getItem("sort")
+      : "name"
   );
   const [showLowStockOnly, setShowLowStockOnly] = useState(
-    localStorage.getItem("lowStock")
+    localStorage.getItem("lowStock") === true
   );
 
   const handleDepartmentChange = (event) => {
@@ -54,21 +55,17 @@ const Products = () => {
         inventoryData: data,
       });
     }
-    localStorage.setItem("lowStock", true);
+    // localStorage.setItem("lowStock", !showLowStockOnly);
     setShowLowStockOnly(!showLowStockOnly);
   };
 
   useEffect(() => {
-    // dispatch({
-    //   type: "FILTER_DEPARTMENT",
-    //   department: selectedDepartment,
-    //   inventoryData: data,
-    // });
-    // dispatch({ type: "SORT", sortBy: selectedSort, inventoryData: data });
-    // if (showLowStockOnly) {
-    //   dispatch({ type: "FILTER_LOW_STOCK", inventoryData: data });
-    // }
-  }, []);
+    localStorage.setItem("lowStock", showLowStockOnly);
+  }, [showLowStockOnly]);
+
+  useEffect(() => {
+    localStorage.setItem("inventory", JSON.stringify(inventory.inventory));
+  }, [showLowStockOnly, selectedSort, selectedDepartment]);
 
   return (
     <div className="products">

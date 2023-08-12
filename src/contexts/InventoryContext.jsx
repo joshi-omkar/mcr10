@@ -9,6 +9,8 @@ const InventoryContext = ({ children }) => {
     inventory: inventoryData,
   });
 
+  const localStorageData = localStorage.getItem('inventory')
+
   const [data, setData] = useState(
     inventoryData.sort((a, b) => a.name.localeCompare(b.name))
   );
