@@ -13,12 +13,12 @@ const SingleProduct = () => {
   return (
     <div>
       <h2>{product.name}</h2>
-      <img src={product.imageUrl} alt={product.name} />
-      <p>{product.description}</p>
-      <p>{product.price}</p>
-      <p>{product.stock}</p>
-      <p>{product.sku}</p>
-      <p>{product.supplier}</p>
+      <img style={{width: '360px'}} src={product.imageUrl} alt={product.name} />
+      <p> Description: {product.description}</p>
+      <p>Price: {product.price}</p>
+      <p>Stock: {product.stock}</p>
+      <p>SKU: {product.sku}</p>
+      <p>Supplier: {product.supplier}</p>
     </div>
   );
 };
